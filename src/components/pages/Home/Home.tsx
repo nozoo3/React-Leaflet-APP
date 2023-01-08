@@ -1,7 +1,26 @@
-import React, { FC } from 'react';
+import { FC } from "react";
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 export const Home: FC = () => {
-  return <h1>Home</h1>;
+  return (
+    <MapContainer
+      center={[51.505, -0.09]}
+      zoom={13}
+      scrollWheelZoom={false}
+      style={{ height: "50vh" }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={[51.505, -0.09]}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
+    </MapContainer>
+  );
 };
 
 export default Home;
